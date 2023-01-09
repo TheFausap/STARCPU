@@ -1,0 +1,99 @@
+ ADD←{ ⍝ 16bit addition
+     ⍝ round 1
+     s1←⍺≠⍵
+     c1←⍺∧⍵
+     OVFV[0]←⊃c1
+     c1←SHL c1
+     ⍝ round 2
+     s2←s1+c1
+     c2←s2≥2
+     OVFV[1]←⊃c2
+     c2←SHL c2
+     s2←(s2<2)×s2
+     ⍝ round 3
+     s3←s2+c2
+     c3←s3≥2
+     OVFV[2]←⊃c3
+     c3←SHL c3
+     s3←(s3<2)×s3
+     ⍝ round 4
+     s4←s3+c3
+     c4←s4≥2
+     OVFV[3]←⊃c4
+     c4←SHL c4
+     s4←(s4<2)×s4
+     ⍝ round 5
+     s5←s4+c4
+     c5←s5≥2
+     OVFV[4]←⊃c5
+     c5←SHL c5
+     s5←(s5<2)×s5
+     ⍝ round 6
+     s6←s5+c5
+     c6←s6≥2
+     OVFV[5]←⊃c6
+     c6←SHL c6
+     s6←(s6<2)×s6
+     ⍝ round 7
+     s7←s6+c6
+     c7←s7≥2
+     OVFV[6]←⊃c7
+     c7←SHL c7
+     s7←(s7<2)×s7
+     ⍝ round 8
+     s8←s7+c7
+     c8←s8≥2
+     OVFV[7]←⊃c8
+     c8←SHL c8
+     s8←(s8<2)×s8
+     ⍝ round 9
+     s9←s8+c8
+     c9←s9≥2
+     OVFV[8]←⊃c9
+     c9←SHL c9
+     s9←(s9<2)×s9
+     ⍝ round 10
+     s10←s9+c9
+     c10←s10≥2
+     OVFV[9]←⊃c10
+     c10←SHL c10
+     s10←(s10<2)×s10
+     ⍝ round 11
+     s11←s10+c10
+     c11←s11≥2
+     OVFV[10]←⊃c11
+     c11←SHL c11
+     s11←(s11<2)×s11
+     ⍝ round 12
+     s12←s11+c11
+     c12←s12≥2
+     OVFV[11]←⊃c12
+     c12←SHL c12
+     s12←(s12<2)×s12
+     ⍝ round 13
+     s13←s12+c12
+     c13←s13≥2
+     OVFV[12]←⊃c13
+     c13←SHL c13
+     s13←(s13<2)×s13
+     ⍝ round 14
+     s14←s13+c13
+     c14←s14≥2
+     OVFV[13]←⊃c14
+     c14←SHL c14
+     s14←(s14<2)×s14
+     ⍝ round 15
+     s15←s14+c14
+     c15←s15≥2
+     OVFV[14]←⊃c15
+     c15←SHL c15
+     s15←(s15<2)×s15
+     ⍝ round 16
+     s16←s15+c15
+     c16←s15≥2
+     OVFV[15]←⊃c16
+     c16←SHL c16
+     s16←(s16<2)×s16
+     OVF←~⍬≡⍸OVFV
+     s16
+ }
