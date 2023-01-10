@@ -1,0 +1,10 @@
+ z←p PARSE l
+ :If p=⍴l
+     z←'DONE PARSING'
+ :ElseIf '0000000000000001'≡↑l[p]
+     MEM[(bin l[p+1]);(bin l[p+2]);]←↑l[p+3]
+     z←(p+4)PARSE l
+ :ElseIf ':'=⊃↑l[p]
+     LABEL↑l[p]
+     z←(p+1)PARSE l
+ :End

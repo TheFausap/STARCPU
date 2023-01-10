@@ -1,0 +1,9 @@
+ NXT;pch;pcl
+ pch←PC[⍳8]
+ pcl←PC[8+⍳8]
+ pcl←(0 0 0 0 0 0 0 1)ADD8 pcl
+ :If OVF=1
+     pcl←(0 0 0 0 0 0 0 0)
+     pch←(0 0 0 0 0 0 0 1)ADD8 pch
+ :End
+ PC←pch,pcl

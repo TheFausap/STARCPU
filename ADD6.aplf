@@ -1,0 +1,39 @@
+ ADD6←{ ⍝ 6bit addition
+     ⍝ round 1
+     s1←⍺≠⍵
+     c1←⍺∧⍵
+     OVFV[0]←⊃c1
+     c1←SHL6 c1
+     ⍝ round 2
+     s2←s1+c1
+     c2←s2≥2
+     OVFV[1]←⊃c2
+     c2←SHL6 c2
+     s2←(s2<2)×s2
+     ⍝ round 3
+     s3←s2+c2
+     c3←s3≥2
+     OVFV[2]←⊃c3
+     c3←SHL6 c3
+     s3←(s3<2)×s3
+     ⍝ round 4
+     s4←s3+c3
+     c4←s4≥2
+     OVFV[3]←⊃c4
+     c4←SHL6 c4
+     s4←(s4<2)×s4
+     ⍝ round 5
+     s5←s4+c4
+     c5←s5≥2
+     OVFV[4]←⊃c5
+     c5←SHL6 c5
+     s5←(s5<2)×s5
+     ⍝ round 6
+     s6←s5+c5
+     c6←s6≥2
+     OVFV[5]←⊃c6
+     c6←SHL6 c6
+     s6←(s6<2)×s6
+     OVF←~⍬≡⍸OVFV
+     s6
+ }
